@@ -10,9 +10,7 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            /*
-             * Todo follow all comments!! 
-             */
+            // Todo follow all comments!! 
 
             #region Vehicles
 
@@ -31,22 +29,33 @@ namespace ConsoleUI
              * Only in the Motorcycle class will you override the virtual drive method
             */
 
-            // Create a list of Vehicle called vehicles
+            List<Vehicle> vehicles = new List<Vehicle>(); // Create a list of Vehicle called vehicles
 
-            /*
-             * Create 4 instances: 1 Car, 1 Motorcycle, and then 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes
-             * - new it up as one of each derived class
-             * Set the properties with object initializer syntax
-             */
+            var kia = new Car() { Year = 2021, Make = "Kia", Model = "Rio", NumberOfWheels = 4 };
+            var harley = new Motorcycle() { Year = 2022, Make = "Harley Davidson", Model = "Road King", NumberOfWheels = 2 };  // Create 4 instances: 1 Car, 1 Motorcycle, and then 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes
+            Vehicle toyota = new Car() { Year = 2003, Make = "Toyota", Model = "Solara", NumberOfWheels = 4 };                  // - new it up as one of each derived class
+            Vehicle janus = new Motorcycle() { Year = 2019, Make = "Janus", Model = "Halcyon 450", NumberOfWheels = 2 };       // Set the properties with object initializer syntax
 
-            /*
-             * Add the 4 vehicles to the list
-             * Using a foreach loop iterate over each of the properties
-             */
+            vehicles.Add(kia);
+            vehicles.Add(harley);
+            vehicles.Add(janus);
+            vehicles.Add(toyota);
 
-            // Call each of the drive methods for one car and one motorcycle
+            foreach (var vehicle in vehicles)
+            {
+                Console.WriteLine($"This is a {vehicle.Year} {vehicle.Make} {vehicle.Model}.");
+                Console.WriteLine();
+            }
 
-            #endregion            
+            Console.WriteLine($"Message from the Toyota: {kia.DriveAbstract()}");
+            Console.Write("The Kia says: ");
+            kia.DriveVirtual();                                                              // Add the 4 vehicles to the list
+            Console.WriteLine();                                                                // Using a foreach loop iterate over each of the properties 
+            Console.WriteLine($"Message from the Harley Davidson: {harley.DriveAbstract()}");
+            Console.Write("The Harley Davidson says: ");                                        // Call each of the drive methods for one car and one motorcycle
+            harley.DriveVirtual();
+
+            #endregion
             Console.ReadLine();
         }
     }
